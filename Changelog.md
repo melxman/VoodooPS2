@@ -1,5 +1,43 @@
 VoodooPS2 Changelog
 ============================
+#### v2.3.7
+- Fixed multiple PS2/SMBus devices attaching
+- Fixed eratic pointer in bootpicker by disabling SMBus/PS2 devices on shutdown 
+
+#### v2.3.6
+- Lowered macOS requirements to 10.10
+- Added PS/2 stub driver for better VoodooRMI compatibility
+- Removed old external reset interface originally used by VoodooRMI
+
+#### v2.3.5
+- Removed actAsTrackpad and related logic
+- Fix Trackpoints connected to Elan Touchpads
+- Use VoodooInput Trackpoint logic for Elan Touchpads
+
+#### v2.3.4
+- Fixed device count detection when `ps2rst=0` is set
+- Fixed handleClose not being called by VoodooInput
+
+#### v2.3.3
+- Fixed rapidly opening pages in browsers while scrolling with the trackpoint
+- Fixed buttons on various trackpads (especially those without trackpoints attached)
+- Fixed DynamicEWMode problem on Lenovo ThinkPad Laptops (acidanthera/bugtracker#890)
+
+#### v2.3.2
+- Added `ps2kbdonly=1` argument not to disable touchpad line on reboot, thx @Kethen
+
+#### v2.3.1
+- Fixed disabled keyboard after reboot
+
+#### v2.3.0
+- Fixed variable shadowing
+
+#### v2.2.9
+- Improved stability of ALPS touchpads
+- V8 touchpads can pass all four fingers to VoodooInput natively
+- Fixed unpressing during 3 fingers gesture on ALPS V7
+- Use VoodooTrackpoint for trackstick and non-MT ALPS touchpads
+
 #### v2.2.8
 - Added ALPS touchpad support
 - Fixed ELAN trackpoint scrolling in the wrong direction

@@ -282,8 +282,10 @@ private:
 #endif
   OSDictionary*            _rmcfCache {nullptr};
   const OSSymbol*          _deliverNotification {nullptr};
+  const OSSymbol*          _smbusCompanion {nullptr};
 
   int                      _resetControllerFlag {RESET_CONTROLLER_ON_BOOT | RESET_CONTROLLER_ON_WAKEUP};
+  bool                     _kbdOnly {0};
 
   virtual PS2InterruptResult _dispatchDriverInterrupt(size_t port, UInt8 data);
   virtual void dispatchDriverInterrupt(size_t port, UInt8 data);
@@ -304,7 +306,7 @@ private:
   virtual UInt8 readDataPort(size_t port);
   virtual void  writeCommandPort(UInt8 byte);
   virtual void  writeDataPort(UInt8 byte);
-  void resetController(bool);
+  void resetController(void);
   bool setMuxMode(bool);
   void flushDataPort(void);
   void resetDevices(void);
@@ -370,6 +372,8 @@ public:
   OSDictionary* getConfigurationOverride(IOACPIPlatformDevice* acpi, const char* method);
   OSObject* translateArray(OSArray* array);
   OSObject* translateEntry(OSObject* obj);
+  
+  IOReturn startSMBusCompanion(OSDictionary *companionData, UInt8 smbusAddr);
 };
 
 #endif /* _APPLEPS2CONTROLLER_H */
